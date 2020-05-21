@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Refresh</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>This page will refresh forever</h1>
+    <p>Why?<br>Why not?</p>
+    <body onLoad="newpage();">
+    <script type="text/javascript">
+  setTimeout(function(){
+    location = ''
+  },0.1)
+
+	COUNTER_START = 0.1
+
+function tick () {
+	if (document.getElementById ('counter').firstChild.data > 0) {
+		document.getElementById ('counter').firstChild.data = document.getElementById ('counter').firstChild.data - 1
+		setTimeout ('tick()', 1000)
+	} else {
+		document.getElementById ('counter').firstChild.data = 'Reloading...'
+	}
+}
+
+if (document.getElementById) onload = function () {
+	var t = document.createTextNode (COUNTER_START)
+	var p = document.createElement ('P')
+	p.appendChild (t)
+	p.setAttribute ('id', 'counter')
+
+var body = document.getElementsByTagName ('BODY')[0]
+var firstChild = body.getElementsByTagName ('*')[0]
+
+body.insertBefore (p, firstChild)
+tick()
+}
+
+	</script>
+</html>
